@@ -7,7 +7,12 @@ header {
 }
 
 main {
-    padding: 50%;
+    padding: 15% 50%;
+    text-align: left;
+}
+
+.response1 {
+    color: brown;
 }
 
 footer {
