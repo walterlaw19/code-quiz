@@ -8,11 +8,19 @@ header {
 
 main {
     padding: 15% 50%;
-    text-align: left;
+    ;
+}
+
+.jsquestions {
+    padding: 0;
 }
 
 .response1 {
     color: brown;
+}
+
+.allquestions {
+    padding: 0;
 }
 
 footer {
