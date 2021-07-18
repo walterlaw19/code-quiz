@@ -16,7 +16,7 @@ function renderLastScore() {
     }
   
     // Set the text of the 'finalScore' to the corresponding values from localStorage
-    highScoreSpan.textContent = initials + ' - ' + finalScore;
+    highScoreSpan.textContent = initials + ' = ' + finalScore;
   }
 
 // code provided by instructor STARTS
