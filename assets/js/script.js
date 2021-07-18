@@ -1,14 +1,4 @@
 
-// var buttonEl = document.querySelector("#startquiz");
-// var answerOneEl = document.querySelector("#answ1");
-
-
-// buttonEl.addEventListener("click", function() {
-//     var answerFirst = document.createElement("li");
-//     answerFirst.className = "response1";
-//     answerFirst.textContent = "this is the a new question/response?";
-//     answerOneEl.appendChild(answerFirst);
-// });
 
 
 
@@ -16,7 +6,7 @@
 
 
 
-// buttonEl.addEventListener("startquiz",Beginquiz);
+
 
 
 // FINISH 4.1.8
@@ -33,28 +23,30 @@
 
 // buttonEl.addEventListener("click", createTaskHandler);
 
+// RETRIEVE LAST SCORE... TO WORK
 
-function renderLastRegistered() {
+
+function renderLastScore() {
     // Retrieve the last email and password from localStorage using `getItem()`
-    var email = localStorage.getItem('email');
-    var password = localStorage.getItem('password');
+    var finalScore = localStorage.getItem('score');
+    
   
     // If they are null, return early from this function
-    if (email === null || password === null) {
+    if (score === null) {
       return;
     }
   
     // Set the text of the 'userEmailSpan' and 'userPasswordSpan' to the corresponding values from localStorage
-    userEmailSpan.textContent = email;
-    userPasswordSpan.textContent = password;
+    finalScoreEl.textContent = finalScore;
+    
   }
 
 
 
 
-
-
 // CODE PROVIDED BY INSTRUCTOR
+
+
 
 
 var questions = [
@@ -73,13 +65,26 @@ var questions = [
         question: "how to code properly?",
         choices: ["sleep", "watch youtube only", "go to the beach", "practice"],
         answer: "practice",
+    },
+    {
+        question: "question4",
+        choices: ["choice4.1", "choice4.2", "choice4.3", "choice4.4"],
+        answer: "choice4.1",
+    },
+    {
+        question: "question5",
+        choices: ["choice5.1", "choice5.2", "choice5.3", "choice5.4"],
+        answer: "choice5.1",
     }
 ];
   
+
+
 var questionEl = document.querySelector("#question");
 var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
+var finalScoreEl = document.querySelector("#finalscore");
 
 var questionIndex = 0;
 var correctCount = 0;
@@ -90,7 +95,10 @@ var intervalId;
 function endQuiz() {
   clearInterval(intervalId);
   var body = document.body;
-  body.innerHTML = "Game over, You scored " + correctCount;
+  body.innerHTML = "All done! Your final score is " + correctCount;
+  
+  
+
 
   localStorage.setItem('score', correctCount);
 }
@@ -112,15 +120,16 @@ function renderQuestion() {
 
   intervalId = setInterval(updateTime, 1000);
   
+  
   questionEl.textContent = questions[questionIndex].question;
 
   optionListEl.innerHTML = "";
   questionResultEl.innerHTML = "";
 
   var choices = questions[questionIndex].choices;
-  var choicesLenth = choices.length;
+  var choicesLength = choices.length;
 
-  for (var i = 0; i < choicesLenth; i++) {
+  for (var i = 0; i < choicesLength; i++) {
     var questionListItem = document.createElement("li");
     questionListItem.textContent = choices[i];
     optionListEl.append(questionListItem);
@@ -151,8 +160,15 @@ function checkAnswer(event) {
   setTimeout(nextQuestion, 2000);
 }
 
-renderQuestion();
+
+
+
+
+
+// renderQuestion();
 optionListEl.addEventListener("click", checkAnswer);
+startQuizBtn.addEventListener("click" , renderQuestion);
+initials.addEventListener("click", renderLastScore);
 
 
 
