@@ -27,18 +27,24 @@
 
 
 function renderLastScore() {
+    var initialsEl = document.querySelector('#input-initials');
+
+    var initials =initialsEl.value;
+
+    // save to localstorage
+    localStorage.setItem("intials", initials);
+
     // Retrieve the last score from localStorage using `getItem()`
     var finalScore = localStorage.getItem('score');
     
   
     // If they are null, return early from this function
-    if (score === null) {
+    if (finalScore === null) {
       return;
     }
   
     // Set the text of the 'finalScore' to the corresponding values from localStorage
-    finalScoreEl.textContent = finalScore;
-    highScoreSpan.textContent = score;
+    highScoreSpan.textContent = initials + ' - ' + finalScore;
     
   }
 
@@ -78,14 +84,12 @@ var questions = [
         answer: "choice5.1",
     }
 ];
-  
-
 
 var questionEl = document.querySelector("#question");
 var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
-var finalScoreEl = document.querySelector("#finalscore");
+
 var highScoreSpan = document.querySelector("#high-score")
 
 var questionIndex = 0;
@@ -95,9 +99,25 @@ var time = 80;
 var intervalId;
 
 function endQuiz() {
+
+
   clearInterval(intervalId);
-  var body = document.body;
-  body.innerHTML = "All done! Your final score is " + correctCount;
+//   var body = document.body;
+//   body.innerHTML = "All done! Your final score is " + correctCount;
+
+  var newH2 = document.createElement("h2");
+  newH2.textContent = "All done! Your final score is " + correctCount;
+
+  var finalScoreEl = document.querySelector("#finalscore");
+  finalScoreEl.prepend(newH2);
+
+  finalScoreEl.style.display = "block";
+
+  var fScoreDiv = document.querySelector("#fscore");
+  fScoreDiv.style.display = "block";
+
+  var endQuestions = document.querySelector("#question-contents");
+  endQuestions.innerHTML = "";
 
   localStorage.setItem('score', correctCount);
 }
@@ -111,6 +131,8 @@ function updateTime() {
 }
 
 function renderQuestion() {
+    var header = document.querySelector("#hide");
+    header.style.display = "none";
     
   
   if (time == 0) {

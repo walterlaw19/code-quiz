@@ -8,7 +8,7 @@
     <link rel="stylesheet" href=".//assets/css/style.css">
 </head>
 <body>
-     <header>
+     <header id="hide">
         <h1>Coding Quiz Challenge</h1>
         <p>Welcome to your first Coding Quiz. We will test your knowledge on coding by asking you questions with a time limit. Please remember that any wrong answers penalize your scorelimit by ten seconds. Click the "Start" button to begin.</p>
 
@@ -24,7 +24,7 @@
     
    
 
-    <main class="allquestions">
+    <main class="allquestions" id="question-contents">
 
         <div id="timer"></div>
 
@@ -41,11 +41,11 @@
     <div id="finalscore">
         <label for="name">Enter initials:</label>
         <input type="text"
-        placeholder="initials">
+        placeholder="initials" id="input-initials">
         <button id="initials" type="submit">submit</button>
     </div>
 
-    <div>
+    <div id="fscore">
         <h2>Highscores</h2>
         <p><span id="high-score"></span></p>
     </div>

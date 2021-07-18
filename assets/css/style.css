@@ -4,6 +4,7 @@ body {
 
 header {
     text-align: center;
+    
 }
 
 main {
@@ -23,6 +24,13 @@ main {
     
 }
 
+#finalscore {
+    display: none;
+}
+
+#fscore {
+    display: none;
+}
 
 
 footer {
