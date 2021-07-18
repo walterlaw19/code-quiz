@@ -118,13 +118,6 @@ function renderQuestion() {
     var questionListItem = document.createElement("li");
     questionListItem.textContent = choices[i];
     optionListEl.append(questionListItem);
-
-    
-
-    
-
-
-
   }
 }
 // code provided by instructor ENDS
