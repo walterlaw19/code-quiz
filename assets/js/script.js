@@ -91,6 +91,8 @@ function endQuiz() {
   clearInterval(intervalId);
   var body = document.body;
   body.innerHTML = "Game over, You scored " + correctCount;
+
+  localStorage.setItem('score', correctCount);
 }
 
 function updateTime() {
