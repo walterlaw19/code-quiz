@@ -27,7 +27,7 @@
 
 
 function renderLastScore() {
-    // Retrieve the last email and password from localStorage using `getItem()`
+    // Retrieve the last score from localStorage using `getItem()`
     var finalScore = localStorage.getItem('score');
     
   
@@ -36,8 +36,9 @@ function renderLastScore() {
       return;
     }
   
-    // Set the text of the 'userEmailSpan' and 'userPasswordSpan' to the corresponding values from localStorage
+    // Set the text of the 'finalScore' to the corresponding values from localStorage
     finalScoreEl.textContent = finalScore;
+    highScoreSpan.textContent = score;
     
   }
 
@@ -85,6 +86,7 @@ var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
 var finalScoreEl = document.querySelector("#finalscore");
+var highScoreSpan = document.querySelector("#high-score")
 
 var questionIndex = 0;
 var correctCount = 0;
@@ -96,9 +98,6 @@ function endQuiz() {
   clearInterval(intervalId);
   var body = document.body;
   body.innerHTML = "All done! Your final score is " + correctCount;
-  
-  
-
 
   localStorage.setItem('score', correctCount);
 }
@@ -112,6 +111,7 @@ function updateTime() {
 }
 
 function renderQuestion() {
+    
   
   if (time == 0) {
     updateTime();
