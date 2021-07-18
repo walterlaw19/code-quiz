@@ -14,18 +14,50 @@ main {
 
 .allquestions {
     padding: 0%;
-    color: navajowhite;
+}
+
+#timer {
+    color: red;
+}
+
+#question {
+    color: steelblue;
 }
 
 .option-list-style {
-    color: brown;
-    border-radius: 1%;
+    color: gray;
+    border-radius: 10%;
     box-shadow: palegoldenrod;
+}
+
+li {
+    background-color: whitesmoke;
+    padding: 20px 0px 20px 20px;
+    width: 35%;
+    border-radius: 15%;
+    margin-top: 15px;
+    text-align: center;
     
 }
 
+li:hover {
+    background-color: darkblue;
+}
+
+#question-result {
+    background-color: black;
+    color: darkgrey;
+    size: 19px;
+    font-size: 20px;
+    width: 20%;
+    text-align: center;
+}
+    
+
+
 #finalscore {
     display: none;
+    font-size: 25px;
 }
 
 #fscore {
