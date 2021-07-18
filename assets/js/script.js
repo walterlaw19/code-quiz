@@ -1,31 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-// FINISH 4.1.8
-
-
-// YOU CAN USE THIS ONE TOO - IT WORKS SEE BELOW!!!!!
-
-// var createTaskHandler = function() {
-//     var answerFirst = document.createElement("li");
-//     answerFirst.className = "response1";
-//     answerFirst.textContent = "this is the a new question/response?";
-//     answerOneEl.appendChild(answerFirst);
-// };
-
-// buttonEl.addEventListener("click", createTaskHandler);
-
-// RETRIEVE LAST SCORE... TO WORK
-
-
 function renderLastScore() {
     var initialsEl = document.querySelector('#input-initials');
 
@@ -37,7 +10,6 @@ function renderLastScore() {
     // Retrieve the last score from localStorage using `getItem()`
     var finalScore = localStorage.getItem('score');
     
-  
     // If they are null, return early from this function
     if (finalScore === null) {
       return;
@@ -45,17 +17,9 @@ function renderLastScore() {
   
     // Set the text of the 'finalScore' to the corresponding values from localStorage
     highScoreSpan.textContent = initials + ' - ' + finalScore;
-    
   }
 
-
-
-
-// CODE PROVIDED BY INSTRUCTOR
-
-
-
-
+// code provided by instructor STARTS
 var questions = [
     {
       question: "Commonly used data types DO NOT include:",
@@ -69,19 +33,19 @@ var questions = [
       answer: "parentheses",
     },
     {
-        question: "how to code properly?",
-        choices: ["sleep", "watch youtube only", "go to the beach", "practice"],
-        answer: "practice",
+        question: "Which of these values is NOT considered false",
+        choices: ["0", "'0'", "null", "' '"],
+        answer: "'0'",
     },
     {
-        question: "question4",
-        choices: ["choice4.1", "choice4.2", "choice4.3", "choice4.4"],
-        answer: "choice4.1",
+        question: "Which of the following is NOT a reason to validate a user's responses?",
+        choices: ["Offers the user an opportunity to enter a correct response.", "Reduces bogus answers getting stored in the database.", "Improves the user experience.", "Increases the overall quality of the user data."],
+        answer: "Improves the user experience.",
     },
     {
-        question: "question5",
-        choices: ["choice5.1", "choice5.2", "choice5.3", "choice5.4"],
-        answer: "choice5.1",
+        question: "Arrays in JavaScript can be used to store __________.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above",
     }
 ];
 
@@ -94,16 +58,15 @@ var highScoreSpan = document.querySelector("#high-score")
 
 var questionIndex = 0;
 var correctCount = 0;
+// code provided by instructor ENDS
+
 
 var time = 80;
 var intervalId;
 
 function endQuiz() {
 
-
   clearInterval(intervalId);
-//   var body = document.body;
-//   body.innerHTML = "All done! Your final score is " + correctCount;
 
   var newH2 = document.createElement("h2");
   newH2.textContent = "All done! Your final score is " + correctCount;
@@ -130,10 +93,11 @@ function updateTime() {
   }
 }
 
+
+// code provided by instructor STARTS
 function renderQuestion() {
     var header = document.querySelector("#hide");
     header.style.display = "none";
-    
   
   if (time == 0) {
     updateTime();
@@ -141,7 +105,6 @@ function renderQuestion() {
   }
 
   intervalId = setInterval(updateTime, 1000);
-  
   
   questionEl.textContent = questions[questionIndex].question;
 
@@ -157,6 +120,8 @@ function renderQuestion() {
     optionListEl.append(questionListItem);
   }
 }
+// code provided by instructor ENDS
+
 
 function nextQuestion() {
   questionIndex++;
@@ -175,7 +140,7 @@ function checkAnswer(event) {
       correctCount++;
     } else {
       questionResultEl.textContent = "Incorrect";
-      time = time - 2;
+      time = time - 10;
       timerEl.textContent = time;
     }
   }
@@ -185,9 +150,6 @@ function checkAnswer(event) {
 
 
 
-
-
-// renderQuestion();
 optionListEl.addEventListener("click", checkAnswer);
 startQuizBtn.addEventListener("click" , renderQuestion);
 initials.addEventListener("click", renderLastScore);
